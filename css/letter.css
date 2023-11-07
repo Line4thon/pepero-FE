@@ -1,0 +1,72 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  align-items: center;
+}
+
+.letter-form {
+  align-items: center;
+  position: absolute;
+  width: 390px;
+  height: 844px;
+  background-color: #faf9f5;
+  margin-left: 40%;
+}
+
+header {
+  padding-top: 70px;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #4b2a0b;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #885c33;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(234, 222, 216, 1);
+
+}
+
+
+#messageInput {
+  border: 16px solid rgba(234, 222, 216, 1) !important;
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  padding: 15px 10px;
+  font-size: 16px;
+  outline: none;
+  width: 299px;
+  height: 380px;
+  top: 42px;
+  left: 20px;
+  border: 16px;
+}
+
+.send-button {
+  color:white;
+  background-color:rgba(64, 31, 0, 1);
+  width: 240px;
+  height: 59px;
+  top: 590px;
+  left: 73px;
+  cursor: pointer;
+  position: absolute;
+  border: none;
+}
