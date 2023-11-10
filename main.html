@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>메인페이지</title>
   </head>
 
@@ -54,16 +53,9 @@
     .pepero-show {
       height: 480px;
       display: flex;
-      justify-content: space-between;
+      margin-left: 60px;
       width: 100%;
       margin-top: 40px;
-    }
-
-    #arrow1 {
-      border: none;
-      background-color: #faf9f5;
-      padding-left: 15px;
-      margin-top: -120px;
     }
 
     .pepero {
@@ -77,13 +69,6 @@
     #main5 {
       margin-left: 14px;
       filter: drop-shadow(2px 2px 2px #000);
-    }
-
-    #arrow2 {
-      border: none;
-      background-color: #faf9f5;
-      padding-right: 15px;
-      margin-top: -120px;
     }
 
     .next {
@@ -115,27 +100,7 @@
       font-weight: 600;
       border: none;
     }
-
-    #blurry-background {
-      position: absolute;
-      top: 0;
-      margin-left: 670px;
-      width: 400px;
-      height: 844px;
-      background: rgba(0, 0, 0, 0.5);
-      filter: blur(5px);
-      z-index: 10;
-    }
-
-    #overlay-image {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-    }
   </style>
-
   <body>
     <!--전체 화면을 포함하는 section 박스-->
     <section class="main-form">
@@ -146,9 +111,6 @@
       </div>
       <!--빼빼로를 보여주는 div 태그-->
       <div class="pepero-show">
-        <button type="button" id="arrow1">
-          <img src="img/arrow1.png" />
-        </button>
         <div class="pepero">
           <img src="img/main1.png" id="main1" />
           <img src="img/main2.png" id="main2" />
@@ -156,9 +118,6 @@
           <img src="img/main4.png" id="main4" />
           <img src="img/main5.png" id="main5" />
         </div>
-        <button type="button" id="arrow2">
-          <img src="img/arrow2.png" />
-        </button>
       </div>
 
       <!--버튼으로 옵션을 선택하는 화면을 보여주는 div 태그-->
@@ -174,23 +133,11 @@
           window.location.href = "pepero_make1.html";
         });
 
-      $(document).ready(function () {
-        // 버튼 클릭 시
-        $("#watch_pepero").click(function () {
-          console.log("버튼 클릭됨"); // 디버깅용 로그
-
-          // 블러 스타일 추가
-          $("body").append('<div id="blurry-background"></div>');
-
-          // 이미지 스타일 추가
-          $("body").append(
-            '<img id="overlay-image" src="img/img1.png" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
-          );
-          $("body").append(
-            '<img id="overlay-image" src="img/letter.png" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
-          );
+      document
+        .getElementById("watch_pepero")
+        .addEventListener("click", function () {
+          window.location.href = "pepero_list.html";
         });
-      });
     </script>
   </body>
 </html>
