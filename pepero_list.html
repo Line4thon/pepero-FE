@@ -1,222 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/letter.css">
-  <title>빼빼로 보관함</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빼빼로 보관함</title>
 
-  <style>
-  body {
-  font-family: "Noto Sans KR", sans-serif;
-  align-items: center;
-  background-color: #faf9f5;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-.pepero-form {
-  width: 390px;
-  height: 844px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-header {
-  padding-top: 70px;
-  align-items: center;
-  justify-content: center;
-  font-family: Inter;
-}
-
-h1 {
-  font-size: 25px;
-  font-weight: 600;
-  text-align: center;
-  color: #4b2a0b;
-}
-
-h3 {
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-  color: #885c33;
-}
-
-.pepero-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-    /* justify-content: flex-start; */
-  padding: 20px 10px;
-    /* font-size: 16px; */
-    /* outline: none; */
-  width: 380px;
-  height: 439px;
-}
-
-.pepero-show {
-      height: 480px;
-      display: flex;
-      justify-content: space-between;
-      width: 290px;
-      margin-top: 40px;
-      /* position: relative; */
-      margin-bottom: 30px
-    }
-
-    .pepero-element {
-      position: absolute;
-      z-index: 1;
-    }
-
-    .choco-image {
-      position: absolute;
-      z-index: 2;
-    }
-
-    .deco-image {
-      position: absolute;
-      z-index: 3;
-    }
-
-    .sauce-image {
-      position: absolute;
-      z-index: 4;
-    }
-
-    #arrow1 {
-      width: 36px;
-      height: 25px;
-      border: none;
-      background-color: #faf9f5;
-      padding-left: 15px;
-      margin-top: -120px;
-      position: relative;
-    top: 280px;
-    left: -50px;
-    }
-
-    #arrow2 {
-      border: none;
-    background-color: #faf9f5;
-    padding-right: 15px;
-    margin-top: -120px;
-    width: 36px;
-    height: 25px;
-    position: relative;
-    top: 280px;
-    left: 50px;
-    }
-
-
-
-.main-button {
-  color: white;
-    background-color: rgba(64, 31, 0, 1);
-    flex-shrink: 0;
-    width: 250px;
-    height: 50px;
-    cursor: pointer;
-    position: relative;
-    top: px;
-    border: none;
-    border-radius: 20px;
-    color: var(--mainWH, #FFF);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-  </style>
-</head>
-<body>
-  <section class="pepero-form">
-    <header>
-      <h1>받은 빼빼로들을 확인해볼까요?</h1>
-      <h3>마음이 담긴 빼빼로와 편지들이 도착했어요!<br>
-        지금 바로 확인해보세요!
-      </h3>
-    </header>
-
-    <div class="pepero-show">
-      <button type="button" id="arrow1">
-        <img src="img/arrow1.png" alt="왼쪽 화살표"/>
-      </button>
-
-      <img src="img/pepero.png" class="pepero-element" id="peperoBase" alt="빼빼로 기본"/>
-      <img src="img/choco.png" class="choco-image" id="chocoImage" alt="초콜릿"/>
-      <img src="img/chocosyrup.png" class="sauce-image" id="sauceImage" alt="시럽"/>
-      <img src="img/hartdeco.png" class="deco-image" id="decoImage" alt="토핑"/>
-
-      <button type="button" id="arrow2">
-        <img src="img/arrow2.png" alt="오른쪽 화살표"/>
-      </button>
-    </div>
-
-    <button onclick="window.open('main.html')" class="main-button">메인 화면으로</button>
-  </section>
-
-  <!-- <script>
-    // 빼빼로 데이터 배열입니다. 실제로는 백엔드에서 데이터를 가져올 것입니다.
-    let peperos = []; // 백엔드에서 받아온 빼빼로 데이터 배열
-    let currentIndex = 0; // 현재 표시되는 빼빼로 인덱스
-
-    // 빼빼로를 화면에 추가하는 함수
-    function displayPeperos() {
-      const peperoContainer = document.querySelector('.pepero-show');
-      peperoContainer.innerHTML = ''; // 기존의 빼빼로를 지우지 않습니다.
-
-      // 현재 페이지의 빼빼로를 표시합니다.
-      const pagePeperos = peperos.slice(currentIndex, currentIndex + 5);
-      pagePeperos.forEach(pepero => {
-        const peperoElement = document.createElement('div');
-        peperoElement.classList.add('pepero-item');
-        peperoElement.innerHTML = `
-          <img src="${pepero.baseImage}" class="pepero-element" alt="빼빼로 기본"/>
-          <img src="${pepero.chocoImage}" class="choco-image" alt="초콜릿"/>
-          <img src="${pepero.sauceImage}" class="sauce-image" alt="시럽"/>
-          <img src="${pepero.decoImage}" class="deco-image" alt="토핑"/>
-        `;
-        peperoContainer.appendChild(peperoElement);
-      });
-    }
-
-    // 다음 빼빼로 페이지로 이동하는 함수
-    function nextPeperoPage() {
-      if (currentIndex + 5 < peperos.length) {
-        currentIndex += 5;
-        displayPeperos();
+    <style>
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        align-items: center;
+        background-color: #faf9f5;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
       }
-    }
 
-    // 이전 빼빼로 페이지로 이동하는 함수
-    function prevPeperoPage() {
-      if (currentIndex - 5 >= 0) {
-        currentIndex -= 5;
-        displayPeperos();
+      .pepero-form {
+        width: 390px;
+        height: 844px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-    }
 
-    // 화살표 버튼 이벤트 리스너를 추가합니다.
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('arrow1').addEventListener('click', prevPeperoPage);
-      document.getElementById('arrow2').addEventListener('click', nextPeperoPage);
+      header {
+        padding-top: 70px;
+        align-items: center;
+        justify-content: center;
+        font-family: Inter;
+      }
 
-      // 예시 데이터를 로드합니다. 실제로는 백엔드에서 데이터를 가져옵니다.
-      peperos = [
-        // ... 백엔드에서 받아온 빼빼로 데이터 ...
-      ];
-      displayPeperos();
-    });
-  </script> -->
-</body>
+      h1 {
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #4b2a0b;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        color: #885c33;
+      }
+
+      .pepero-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: flex-start; */
+        padding: 20px 10px;
+        /* font-size: 16px; */
+        /* outline: none; */
+        width: 380px;
+        height: 439px;
+      }
+
+      .pepero-show {
+        height: 480px;
+        display: flex;
+        justify-content: space-between;
+        width: 290px;
+        /* margin-top: 40px; */
+        /* position: relative; */
+        margin-bottom: 30px;
+      }
+
+      .pepero-element {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .choco-image {
+        position: absolute;
+        margin-left: -3px;
+        z-index: 2;
+      }
+
+      .deco-image {
+        position: absolute;
+        margin-left: 2px;
+        margin-top: 10px;
+        z-index: 3;
+      }
+
+      .sauce-image {
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 5px;
+        z-index: 4;
+      }
+
+      #arrow1 {
+        width: 36px;
+        height: 25px;
+        border: none;
+        background-color: #faf9f5;
+        padding-left: 15px;
+        margin-top: -120px;
+        position: relative;
+        top: 280px;
+        left: -40px;
+      }
+
+      #arrow2 {
+        border: none;
+        background-color: #faf9f5;
+        padding-right: 15px;
+        margin-top: -120px;
+        width: 36px;
+        height: 25px;
+        position: relative;
+        top: 280px;
+        left: 30px;
+      }
+
+      #messageButton {
+        margin-left: -250px;
+      }
+
+      .main-button {
+        color: white;
+        background-color: rgba(64, 31, 0, 1);
+        flex-shrink: 0;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        top: px;
+        border: none;
+        border-radius: 20px;
+        color: var(--mainWH, #fff);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="pepero-form">
+      <header>
+        <h1>받은 빼빼로들을 확인해볼까요?</h1>
+        <h3>
+          마음이 담긴 빼빼로와 편지들이 도착했어요!<br />
+          지금 바로 확인해보세요!
+        </h3>
+      </header>
+
+      <div class="pepero-show">
+        <button type="button" id="arrow1">
+          <img src="img/arrow1.png" alt="왼쪽 화살표" />
+        </button>
+
+        <div id="messageButton">
+          <img
+            src="img/pepero.png"
+            class="pepero-element"
+            id="peperoBase"
+            alt="빼빼로 기본"
+          />
+          <img
+            src="img/choco.png"
+            class="choco-image"
+            id="chocoImage"
+            alt="초콜릿"
+          />
+          <img
+            src="img/chocosyrup.png"
+            class="sauce-image"
+            id="sauceImage"
+            alt="시럽"
+          />
+          <img
+            src="img/hartdeco.png"
+            class="deco-image"
+            id="decoImage"
+            alt="토핑"
+          />
+        </div>
+
+        <button type="button" id="arrow2">
+          <img src="img/arrow2.png" alt="오른쪽 화살표" />
+        </button>
+      </div>
+
+      <button onclick="window.open('main.html')" class="main-button">
+        메인 화면으로
+      </button>
+    </section>
+
+    <script type="text/javascript">
+      document
+        .getElementById("messageButton")
+        .addEventListener("click", function () {
+          window.location.href = "pepero_list_detail.html";
+        });
+    </script>
+  </body>
 </html>
-
-
